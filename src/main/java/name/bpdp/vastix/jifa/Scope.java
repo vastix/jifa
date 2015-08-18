@@ -1,4 +1,4 @@
-package name.bpdp.weberia.jifa;
+package name.bpdp.vastix.jifa;
 
 import java.util.HashMap;
 import java.util.Map;

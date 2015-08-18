@@ -1,10 +1,10 @@
-package name.bpdp.weberia.jifa;
+package name.bpdp.vastix.jifa;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import name.bpdp.weberia.jifa.generated.IfaLexer;
-import name.bpdp.weberia.jifa.generated.IfaParser;
+import name.bpdp.vastix.jifa.generated.IfaLexer;
+import name.bpdp.vastix.jifa.generated.IfaParser;
 import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;

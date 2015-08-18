@@ -1,4 +1,4 @@
-package name.bpdp.weberia.jifa;
+package name.bpdp.vastix.jifa;
 
 import java.util.List;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import name.bpdp.weberia.jifa.generated.IfaParser.ExpressionContext;
+import name.bpdp.vastix.jifa.generated.IfaParser.ExpressionContext;
 
 public class Function {
     private String id;

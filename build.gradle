@@ -1,28 +1,10 @@
-buildscript {
-    repositories { jcenter() }
-    dependencies {
-        classpath 'com.github.jengelman.gradle.plugins:shadow:1.1.1',
-            'com.github.jengelman.gradle.plugins:shadow:1.2.1'
-            // asciidoc gradle plugin
-            // http://asciidoctor.org/docs/asciidoctor-gradle-plugin/
-            // abandon 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.2'
-    }
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '1.2.2'
+    id 'antlr'
+    id 'maven-publish'
+    id 'application'
 }
-
-apply plugin: 'java'
-apply plugin: 'antlr'
-apply plugin: 'com.github.johnrengelman.shadow'
-apply plugin: 'maven-publish'
-// asciidoc - for documentaton
-// sourceDir	
-// 		where the asciidoc sources are. Type: File. Default: src/asciidoc.
-//
-// sourceDocumentNames	
-// 		an override to process multiple source files, which may be a subset 
-//		of all files available in ${sourceDir}. Type: FileCollection. 
-//		Defaults to all files in ${sourceDir}.
-//apply plugin: 'org.asciidoctor.convert'
-apply plugin: 'application'
 
 def vertxVersion = '3.0.0'
 version = '1.0.0'
@@ -42,7 +24,7 @@ if (!JavaVersion.current().java8Compatible) {
 publishing {
     publications {
         maven(MavenPublication) {
-            groupId 'name.bpdp.weberia'
+            groupId 'name.bpdp.vastix'
             artifactId 'jifa'
             version '1.0.0'
             from components.java
@@ -56,24 +38,18 @@ repositories {
     maven { url 'http://oss.sonatype.org/content/repositories/snapshots' }
     jcenter()
     mavenLocal()
-    // uncomment for unmanaged deps
-    //flatDir {
-    //    dirs 'lib'
-    //}
 }
 
 dependencies {
     compile 'io.vertx:vertx-core:' + vertxVersion
-    // uncomment for unmanaged deps
-    // compile fileTree(dir: 'lib', include: '*.jar')
-    antlr "org.antlr:antlr4:4.5"
+    antlr "org.antlr:antlr4:4.5.1"
     testCompile 'junit:junit:4.12'
 }
 
 shadowJar {
     classifier = 'fat'
     manifest {
-        attributes 'Main-Class': 'name.bpdp.weberia.jifa.Jifa'
+        attributes 'Main-Class': 'name.bpdp.vastix.jifa.Jifa'
     }
     mergeServiceFiles {
         include 'META-INF/services/io.vertx.core.spi.VerticleFactory'
@@ -81,10 +57,10 @@ shadowJar {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.5'
+    gradleVersion = '2.6'
 }
 
-mainClassName = 'name.bpdp.weberia.jifa.Jifa'
+mainClassName = 'name.bpdp.vastix.jifa.Jifa'
 
 generateGrammarSource {
     maxHeapSize = "64m"

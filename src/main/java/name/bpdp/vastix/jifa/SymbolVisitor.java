@@ -1,14 +1,14 @@
-package name.bpdp.weberia.jifa;
+package name.bpdp.vastix.jifa;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import name.bpdp.weberia.jifa.generated.IfaBaseVisitor;
+import name.bpdp.vastix.jifa.generated.IfaBaseVisitor;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import name.bpdp.weberia.jifa.generated.IfaParser.FunctionDeclContext;
+import name.bpdp.vastix.jifa.generated.IfaParser.FunctionDeclContext;
 
 public class SymbolVisitor extends IfaBaseVisitor<IfaValue> {
     Map<String, Function> functions;

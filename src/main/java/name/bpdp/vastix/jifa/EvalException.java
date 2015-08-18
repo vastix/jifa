@@ -1,4 +1,4 @@
-package name.bpdp.weberia.jifa;
+package name.bpdp.vastix.jifa;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 

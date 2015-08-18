@@ -1,5 +1,5 @@
-package name.bpdp.weberia.jifa.generated;// Generated from /home/bpdp/kerjaan/git-repos/weberia-vertx/weberia-jifa/src/main/antlr/Ifa.g4 by ANTLR 4.5
-import org.antlr.v4.runtime.misc.NotNull;
+package name.bpdp.vastix.jifa.generated;
+// Generated from /home/bpdp/kerjaan/git-repos/vastix/jifa/src/main/antlr/Ifa.g4 by ANTLR 4.5.1
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
