@@ -1,5 +1,9 @@
 grammar Ifa;
 
+//@header {
+//package name.bpdp.vastix.jifa.generated;
+//}
+
 stat    
     : (force '(' Propositional+ ')')+ EOF
     ;

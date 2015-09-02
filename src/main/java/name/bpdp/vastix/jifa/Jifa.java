@@ -8,7 +8,7 @@ import name.bpdp.vastix.jifa.generated.*;
 public class Jifa {
   public static void main( String[] args) throws Exception 
   {
-    IfaLexer lexer = new IfaLexer( new ANTLRFileStream("src/main/resources/get-list.ifa"));
+    IfaLexer lexer = new IfaLexer( new ANTLRFileStream("src/main/resources/test.ifa"));
     CommonTokenStream tokens = new CommonTokenStream( lexer );
     IfaParser parser = new IfaParser( tokens );
     ParseTree tree = parser.stat();
