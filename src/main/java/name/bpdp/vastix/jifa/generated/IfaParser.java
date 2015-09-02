@@ -21,9 +21,9 @@ public class IfaParser extends Parser {
 	public static final int
 		T__0=1, ID=2, WS=3;
 	public static final int
-		RULE_r = 0;
+		RULE_stat = 0;
 	public static final String[] ruleNames = {
-		"r"
+		"stat"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
@@ -81,25 +81,25 @@ public class IfaParser extends Parser {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
-	public static class RContext extends ParserRuleContext {
+	public static class StatContext extends ParserRuleContext {
 		public TerminalNode ID() { return getToken(IfaParser.ID, 0); }
-		public RContext(ParserRuleContext parent, int invokingState) {
+		public StatContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_r; }
+		@Override public int getRuleIndex() { return RULE_stat; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof IfaListener ) ((IfaListener)listener).enterR(this);
+			if ( listener instanceof IfaListener ) ((IfaListener)listener).enterStat(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof IfaListener ) ((IfaListener)listener).exitR(this);
+			if ( listener instanceof IfaListener ) ((IfaListener)listener).exitStat(this);
 		}
 	}
 
-	public final RContext r() throws RecognitionException {
-		RContext _localctx = new RContext(_ctx, getState());
-		enterRule(_localctx, 0, RULE_r);
+	public final StatContext stat() throws RecognitionException {
+		StatContext _localctx = new StatContext(_ctx, getState());
+		enterRule(_localctx, 0, RULE_stat);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{

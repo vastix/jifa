@@ -4,6 +4,7 @@ grammar Ifa;
 package name.bpdp.vastix.jifa.generated;
 }
 
-r   : 'hello' ID;
+stat   : 
+    'hello' ID;
 ID  : [a-z]+ ;
 WS  : [ \t\r\n]+ -> skip ;

@@ -18,13 +18,13 @@ public class IfaBaseListener implements IfaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterR(IfaParser.RContext ctx) { }
+	@Override public void enterStat(IfaParser.StatContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitR(IfaParser.RContext ctx) { }
+	@Override public void exitStat(IfaParser.StatContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

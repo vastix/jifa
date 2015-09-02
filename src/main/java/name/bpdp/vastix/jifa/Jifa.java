@@ -11,7 +11,7 @@ public class Jifa {
     IfaLexer lexer = new IfaLexer( new ANTLRFileStream("src/main/resources/get-list.ifa"));
     CommonTokenStream tokens = new CommonTokenStream( lexer );
     IfaParser parser = new IfaParser( tokens );
-    ParseTree tree = parser.r();
+    ParseTree tree = parser.stat();
     ParseTreeWalker walker = new ParseTreeWalker();
     walker.walk( new JifaWalker(), tree );
   }

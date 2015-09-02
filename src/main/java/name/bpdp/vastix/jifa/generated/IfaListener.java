@@ -10,13 +10,13 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface IfaListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link IfaParser#r}.
+	 * Enter a parse tree produced by {@link IfaParser#stat}.
 	 * @param ctx the parse tree
 	 */
-	void enterR(IfaParser.RContext ctx);
+	void enterStat(IfaParser.StatContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link IfaParser#r}.
+	 * Exit a parse tree produced by {@link IfaParser#stat}.
 	 * @param ctx the parse tree
 	 */
-	void exitR(IfaParser.RContext ctx);
+	void exitStat(IfaParser.StatContext ctx);
 }

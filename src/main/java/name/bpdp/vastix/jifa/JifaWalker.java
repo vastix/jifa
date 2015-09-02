@@ -3,11 +3,11 @@ package name.bpdp.vastix.jifa;
 import name.bpdp.vastix.jifa.generated.*;
 
 public class JifaWalker extends IfaBaseListener {
-  public void enterR(IfaParser.RContext ctx ) {
-    System.out.println( "Entering R : " + ctx.ID().getText() );
+  public void enterStat(IfaParser.StatContext ctx ) {
+    System.out.println( "Entering Statement : " + ctx.ID().getText() );
   }
 
-  public void exitR(IfaParser.RContext ctx ) {
-    System.out.println( "Exiting R" );
+  public void exitStat(IfaParser.StatContext ctx ) {
+    System.out.println( "Exiting Statement" );
   }
 }
