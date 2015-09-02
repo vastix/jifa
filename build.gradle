@@ -66,6 +66,7 @@ task copyGenSource(type: Copy) {
 
 generateGrammarSource {
     maxHeapSize = '64m'
-    arguments += ['-visitor', '-long-messages']
+    arguments += ['-long-messages']
+    //arguments += ['-visitor', '-long-messages']
     outputDirectory = file('src/main/java/name/bpdp/vastix/jifa/generated')
 }
