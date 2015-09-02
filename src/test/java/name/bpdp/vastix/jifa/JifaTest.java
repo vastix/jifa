@@ -1,4 +1,4 @@
-package name.bpdp.vastix.jifa;
+/*package name.bpdp.vastix.jifa;
 
 import name.bpdp.vastix.jifa.generated.IfaLexer;
 import name.bpdp.vastix.jifa.generated.IfaParser;
@@ -40,10 +40,11 @@ public class JifaTest {
     @Test
     public void TestPrint() {
 
-        String printScript = "assert(1 < 2);";
+        String printScript =  "assert(1 < 2);";
 
-        testScript(printScript);
+        //assertEquals(true,testScript(printScript));
 
     }
 
 }
+*/

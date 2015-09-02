@@ -1,35 +1,18 @@
 package name.bpdp.vastix.jifa;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.tree.*;
 
-import name.bpdp.vastix.jifa.generated.IfaLexer;
-import name.bpdp.vastix.jifa.generated.IfaParser;
-import org.antlr.v4.runtime.ANTLRFileStream;
-import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.tree.ParseTree;
+import name.bpdp.vastix.jifa.generated.*;
 
 public class Jifa {
-    public static void main(String[] args) {
-        try {
-            IfaLexer lexer = new IfaLexer(new ANTLRFileStream("src/main/resources/get-list.ifa"));
-            IfaParser parser = new IfaParser(new CommonTokenStream(lexer));
-            parser.setBuildParseTree(true);
-            ParseTree tree = parser.parse();
-
-            Scope scope = new Scope();
-            Map<String, Function> functions = new HashMap<String, Function>();
-            SymbolVisitor symbolVisitor = new SymbolVisitor(functions);
-            symbolVisitor.visit(tree);
-            EvalVisitor visitor = new EvalVisitor(scope, functions);
-            visitor.visit(tree);
-            System.out.println(visitor);
-        } catch (Exception e) {
-            if ( e.getMessage() != null) {
-                System.err.println(e.getMessage());
-            } else {
-                e.printStackTrace();
-            }
-        }
-    }
+  public static void main( String[] args) throws Exception 
+  {
+    IfaLexer lexer = new IfaLexer( new ANTLRFileStream("src/main/resources/get-list.ifa"));
+    CommonTokenStream tokens = new CommonTokenStream( lexer );
+    IfaParser parser = new IfaParser( tokens );
+    ParseTree tree = parser.r();
+    ParseTreeWalker walker = new ParseTreeWalker();
+    walker.walk( new JifaWalker(), tree );
+  }
 }

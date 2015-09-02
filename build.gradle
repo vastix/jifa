@@ -51,9 +51,6 @@ shadowJar {
     manifest {
         attributes 'Main-Class': 'name.bpdp.vastix.jifa.Jifa'
     }
-    mergeServiceFiles {
-        include 'META-INF/services/io.vertx.core.spi.VerticleFactory'
-    }
 }
 
 task wrapper(type: Wrapper) {
@@ -62,7 +59,13 @@ task wrapper(type: Wrapper) {
 
 mainClassName = 'name.bpdp.vastix.jifa.Jifa'
 
+task copyGenSource(type: Copy) {
+    from 'build/generated-src/antlr/main'
+    into 'src/main/java/name/bpdp/vastix/jifa/generated'
+}
+
 generateGrammarSource {
-    maxHeapSize = "64m"
-    arguments += ["-visitor", "-long-messages"]
+    maxHeapSize = '64m'
+    arguments += ['-visitor', '-long-messages']
+    outputDirectory = file('src/main/java/name/bpdp/vastix/jifa/generated')
 }
