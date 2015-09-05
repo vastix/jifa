@@ -13,6 +13,7 @@ See ``env.sh``. Only works in Bash environment. Just source it: ``source env.sh`
 * jt => go to the src/test/grammar
 * t => test grammar (execute ``jt`` first), has to be in src/test/grammar dir
 * d => delete all compilation results (execute ``jt`` first), has to be in src/test/grammar dir
+
 Edit contents of ``jf`` and ``jt`` to suit your dir structure.
 
 ## License
