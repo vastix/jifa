@@ -4,6 +4,16 @@
 
 This project uses [Gradle](http://www.gradle.org). As always `build.gradle` is used as main gradle file to manage this project. I use [Gradle ANTLR Plugin](https://docs.gradle.org/current/userguide/antlr_plugin.html) to generate grammar source. This deployment includes code generator, automatically executed by ``gradle build``. See also ``generateGrammarSource`` inside ``build.gradle``. `gradle run` will compile and execute all source code.
 
+## Environment variables
+
+**Optional - only in Linux - Bash**
+
+See ``env.sh``. Only works in Bash environment. Just source it: ``source env.sh``. This file defines some environment variables:
+* jf => go to the root directory of Jifa
+* jt => go to the src/test/grammar
+* t => test grammar (execute ``jt`` first), has to be in src/test/grammar dir
+* d => delete all compilation results (execute ``jt`` first), has to be in src/test/grammar dir
+Edit contents of ``jf`` and ``jt`` to suit your dir structure.
 
 ## License
 
