@@ -1,12 +1,9 @@
 # Interaction for Action
 
-## Build
+## Build and run
 
-This project uses [Gradle](http://www.gradle.org). As always `build.gradle` is used as main gradle file to manage this project. I use [Gradle ANTLR Plugin](https://docs.gradle.org/current/userguide/antlr_plugin.html) to generate grammar source. Note that initially I use [Tiny Language](https://github.com/bkiers/tiny-language-antlr4) and extend it for dissertation purposes. Since this deployment includes code generator, some steps are needed.
+This project uses [Gradle](http://www.gradle.org). As always `build.gradle` is used as main gradle file to manage this project. I use [Gradle ANTLR Plugin](https://docs.gradle.org/current/userguide/antlr_plugin.html) to generate grammar source. This deployment includes code generator, automatically executed by ``gradle build``. See also ``generateGrammarSource`` inside ``build.gradle``. `gradle run` will compile and execute all source code.
 
-* `gradle generateGrammarSource`, this will generate some source code, build, and compile them. Generated sources exist in `build/generated-src/antlr/main/`. Actually Gradle ANTLR plugin can accept `outputDirectory`, but I prefer default location so that they don't mixed up with others.
-* Copy all files in generated sources directory above to `src/main/java/name.bpdp.weberia.jifa.generated`. I use Intellij IDEA, so, the package name are automatically appended. If you use [vim](http://www.vim.org) or any other text editor, chances are you need to append package name manually.
-* `gradle run` will compile and execute all source code. If there is no error, it will print `All Assertions have passed`. 
 
 ## License
 
