@@ -47,14 +47,32 @@ propositional
 //    : [a-zA-Z0-9.:/]+ ;
 
 // taken from https://github.com/yaojingguo/antlr-url-grammar
-url: scheme ':' hier_part;
-scheme: 'http';
-hier_part: net_path ('?' query)? ('#' fragment_)?;
-net_path: '//' server (abs_path)?;
-abs_path: ('/' segment)+;
+url
+    : scheme ':' hier_part
+    ;
 
-segment: (pchar)+;
-pchar: escaped
+scheme
+    : 'http'
+    ;
+
+hier_part
+    : net_path ('?' query)? ('#' fragment_)?
+    ;
+
+net_path
+    : '//' server (abs_path)?
+    ;
+
+abs_path
+    : ('/' segment)+
+    ;
+
+segment
+    : (pchar)+
+    ;
+
+pchar
+    : escaped
     | unreserved
     | ':'
     | '@'
@@ -65,48 +83,129 @@ pchar: escaped
     | ','
     ;
 
-server: host (':' port)?;
-port: (DIGIT)+;
-host: hostname | ipV4Address;
+server
+    : host (':' port)?
+    ;
 
-hostname: (domainlabel '.')* toplabel;
-domainlabel: alphanum ((alphanum | '-')* alphanum)?;
-toplabel: ALPHA ((alphanum | '-')? alphanum)?;
+port
+    : (DIGIT)+
+    ;
 
-ipV4Address: (DIGIT)+ '.' (DIGIT)+ '.' (DIGIT)+ '.' (DIGIT)+;
+host
+    : hostname 
+    | ipV4Address
+    ;
 
-fragment_: (uric)*;
+hostname
+    : (domainlabel '.')* toplabel
+    ;
 
-query: param ('&' param)*;
-param: pname '=' pvalue;
-pname: (qc)+;
-pvalue: (qc)+;
+domainlabel
+    : alphanum ((alphanum | '-')* alphanum)?
+    ;
 
-qc: escaped
- | Q_RESERVED
- | unreserved
- ;
-uric: escaped
-   | reserved
-   | unreserved;
+toplabel
+    : ALPHA ((alphanum | '-')? alphanum)?
+    ;
 
-unreserved: alphanum | MARK;
+ipV4Address
+    : (DIGIT)+ '.' (DIGIT)+ '.' (DIGIT)+ '.' (DIGIT)+
+    ;
 
-escaped: '%' hex hex;
-hex: DIGIT
-  | HEX_LETTER
-  ;
-alphanum: DIGIT
-        | ALPHA
-        ;
-reserved: Q_RESERVED | '=' | '&'; 
+fragment_
+    : (uric)*
+    ;
 
-Q_RESERVED: ';' | '/' | '?' | ':' | '@' | '+' | '$' | ',';
-MARK: '-' | '_' | '.' | '!' | '~' | '*' | '\'' | '(' | ')';
-DIGIT: '0'..'9';
-ALPHA: 'a'..'z' | 'A'..'Z' ;
+query
+    : param ('&' param)*
+    ;
 
-fragment
-HEX_LETTER: 'a'..'f' | 'A'..'F';
+param
+    : pname '=' pvalue
+    ;
 
-WS  : [ \t\r\n]+ -> skip ;
+pname
+    : (qc)+
+    ;
+
+pvalue
+    : (qc)+
+    ;
+
+qc
+    : escaped
+    | Q_RESERVED
+    | unreserved
+    ;
+
+uric
+    : escaped
+    | reserved
+    | unreserved
+    ;
+
+unreserved
+    : alphanum 
+    | MARK
+    ;
+
+escaped
+    : '%' hex hex
+    ;
+
+hex
+    : DIGIT
+    | HEX_LETTER
+    ;
+
+alphanum
+    : DIGIT
+    | ALPHA
+    ;
+
+reserved
+    : Q_RESERVED 
+    | '=' 
+    | '&'
+    ; 
+
+Q_RESERVED
+    : ';' 
+    | '/' 
+    | '?' 
+    | ':' 
+    | '@' 
+    | '+' 
+    | '$' 
+    | ','
+    ;
+
+MARK
+    : '-' 
+    | '_' 
+    | '.' 
+    | '!' 
+    | '~' 
+    | '*' 
+    | '\'' 
+    | '(' 
+    | ')'
+    ;
+
+DIGIT
+    : '0'..'9'
+    ;
+
+ALPHA
+    : 'a'..'z' 
+    | 'A'..'Z' 
+    ;
+
+fragment HEX_LETTER
+    : 'a'..'f' 
+    | 'A'..'F'
+    ;
+
+WS  
+    : [ \t\r\n]+ -> skip 
+    ;
