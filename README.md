@@ -6,7 +6,7 @@ This project uses [Gradle](http://www.gradle.org). As always `build.gradle` is u
 
 ## Environment variables
 
-**Optional - only in Linux - Bash**
+**Optional, only if you work in Linux, mostly with shell - Bash**. If you don't, open ``build.gradle`` with [NetBeans](http://netbeans.org) or [IntelliJ IDEA](https://www.jetbrains.com/idea/) should be enough.
 
 See ``env.sh``. Only works in Bash environment. Just source it: ``source env.sh``. This file defines some environment variables:
 * jf => go to the root directory of Jifa
