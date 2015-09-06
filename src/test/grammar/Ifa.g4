@@ -4,7 +4,7 @@ grammar Ifa;
 //package name.bpdp.vastix.jifa.generated;
 //}
 
-stat    
+stat
     : (force '(' propositional+ ')')+ EOF
     ;
 
@@ -18,22 +18,18 @@ force
     ;
 
 representatives
-    : 'ASSERT'
-    | 'INFORM'
+    : 'ASSERT' | 'INFORM'
     ;
 
 directives
-    : 'REQUEST'
-    ;
+    : 'REQUEST' ;
 
 commissives
-    : 'CONSENT'
+    : 'CONSENT' 
     ;
 
 expressives
-    : 'APOLOGIZE'
-    | 'THANK'
-    | 'COMPLAIN'
+    : 'APOLOGIZE' | 'THANK' | 'COMPLAIN'
     ;
 
 declaratives
@@ -47,12 +43,13 @@ propositional
 //    : [a-zA-Z0-9.:/]+ ;
 
 // taken from https://github.com/yaojingguo/antlr-url-grammar
+// with some modifs for ANTLR 4.x
 url
     : scheme ':' hier_part
     ;
 
 scheme
-    : 'http'
+    : 'http' | 'https'
     ;
 
 hier_part
@@ -72,15 +69,7 @@ segment
     ;
 
 pchar
-    : escaped
-    | unreserved
-    | ':'
-    | '@'
-    | '&'
-    | '='
-    | '+'
-    | '$'
-    | ','
+    : escaped | unreserved | ':' | '@' | '&' | '=' | '+' | '$' | ','
     ;
 
 server
@@ -92,8 +81,7 @@ port
     ;
 
 host
-    : hostname 
-    | ipV4Address
+    : hostname | ipV4Address
     ;
 
 hostname
@@ -105,7 +93,8 @@ domainlabel
     ;
 
 toplabel
-    : ALPHA ((alphanum | '-')? alphanum)?
+    //: ALPHA ((alphanum | '-')? alphanum)?
+    : ALPHA ((alphanum | '.')* alphanum)?
     ;
 
 ipV4Address
@@ -133,20 +122,15 @@ pvalue
     ;
 
 qc
-    : escaped
-    | Q_RESERVED
-    | unreserved
+    : escaped | Q_RESERVED | unreserved 
     ;
 
 uric
-    : escaped
-    | reserved
-    | unreserved
+    : escaped | reserved | unreserved
     ;
 
 unreserved
-    : alphanum 
-    | MARK
+    : alphanum | MARK
     ;
 
 escaped
@@ -154,42 +138,23 @@ escaped
     ;
 
 hex
-    : DIGIT
-    | HEX_LETTER
+    : DIGIT | HEX_LETTER
     ;
 
 alphanum
-    : DIGIT
-    | ALPHA
+    : DIGIT | ALPHA
     ;
 
 reserved
-    : Q_RESERVED 
-    | '=' 
-    | '&'
+    : Q_RESERVED | '=' | '&'
     ; 
 
 Q_RESERVED
-    : ';' 
-    | '/' 
-    | '?' 
-    | ':' 
-    | '@' 
-    | '+' 
-    | '$' 
-    | ','
+    : ';' | '/' | '?' | ':' | '@' | '+' | '$' | ','
     ;
 
 MARK
-    : '-' 
-    | '_' 
-    | '.' 
-    | '!' 
-    | '~' 
-    | '*' 
-    | '\'' 
-    | '(' 
-    | ')'
+    : '-' | '_' | '.' | '!' | '~' | '*' | '\'' | '(' | ')'
     ;
 
 DIGIT
@@ -197,13 +162,11 @@ DIGIT
     ;
 
 ALPHA
-    : 'a'..'z' 
-    | 'A'..'Z' 
+    : 'a'..'z' | 'A'..'Z' 
     ;
 
-fragment HEX_LETTER
-    : 'a'..'f' 
-    | 'A'..'F'
+HEX_LETTER
+    : 'a'..'f' | 'A'..'F'
     ;
 
 WS  
