@@ -13,7 +13,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 if (!JavaVersion.current().java8Compatible) {
-	throw new IllegalStateException(
+    throw new IllegalStateException(
             '''A Haiku:
             |   This needs Java 8,
             |   You are using something else,
@@ -38,14 +38,11 @@ repositories {
     maven { url 'http://oss.sonatype.org/content/repositories/snapshots' }
     jcenter()
     mavenLocal()
-    flatDir {
-        dirs 'lib'
-    }
 }
 
 dependencies {
     compile 'com.squareup.okhttp:okhttp:2.5.0'
-    compile fileTree(dir: 'lib', include: '*.jar')
+    antlr "org.antlr:antlr4:4.5.1"
     testCompile 'junit:junit:4.12'
 }
 
@@ -61,3 +58,16 @@ task wrapper(type: Wrapper) {
 }
 
 mainClassName = 'name.bpdp.vastix.jifa.Jifa'
+
+task copyGenSource(type: Copy) {
+    from 'build/generated-src/antlr/main'
+    into 'src/main/java/name/bpdp/vastix/jifa/generated'
+}
+
+generateGrammarSource {
+    maxHeapSize = '64m'
+    arguments += ['-long-messages']
+    //arguments += ['-visitor', '-long-messages']
+    outputDirectory = file('src/main/java/name/bpdp/vastix/jifa/generated')
+}
+

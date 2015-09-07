@@ -1,10 +1,5 @@
 package name.bpdp.vastix.jifa;
 
-import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.tree.*;
-
-import name.bpdp.vastix.jifa.generated.*;
-
 public class Jifa {
   public static void main( String[] args) throws Exception 
   {
