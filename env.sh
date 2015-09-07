@@ -1,4 +1,4 @@
-export CLASSPATH=$CLASSPATH:`pwd`/lib/Mouse-1.7.jar
+export CLASSPATH=$CLASSPATH:`pwd`/lib/Mouse-1.7.jar:`pwd`/src/test/grammar/libs/okio-1.6.0.jar:`pwd`/src/test/grammar/libs/okhttp-2.5.0.jar
 alias jf="cd ~/kerjaan/git-repos/vastix/jifa"
 alias jt="cd ~/kerjaan/git-repos/vastix/jifa/src/test/grammar"
 # this used to be antlr shortcuts

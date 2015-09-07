@@ -1,7 +1,52 @@
-Input   = [\n\r]* Line++ EOF ;
-Line    = Space / Lcase / Ucase / Digits ;
-Space = " " ;
-Lcase = [a-z]+ ;
-Ucase = [A-Z]+ ;
-Digits = [0-9]+ ;
-EOF     = !_ <end of file> ;
+Input   
+    =   [\n\r]* Line++ EOF 
+    ;
+Line    
+    =   Force Space+ Propositional+ { lineProcessed }
+    ;
+Force
+    =   Representatives / Directives / Commissives /
+        Expressives / Declaratives { forceProcessed }
+    ;
+Representatives
+    =   "ASSERT" / "INFORM" {representativesProcessed }
+    ;
+Directives
+    =   "REQUEST" { directivesProcessed }
+    ;
+Commissives
+    =   "CONSENT" { commissivesProcessed }
+    ;
+Expressives
+    =   "APOLOGIZE" / "THANK" / "COMPLAIN" { expressivesProcessed }
+    ;
+Declaratives
+    =   "DECLARE" { declarativesProcessed }
+    ;
+Propositional
+    =   Space+ / Lcase / Ucase / Digits / Symbols+ { propotitionalProcessed }
+    ;
+Space 
+    =   " " / "\t" / "\f" / EOL 
+    ;
+Symbols 
+    =   "~" / "!" / "@" / "#" / "$" / "%" / "^" / "&" / "*" / 
+        "(" / ")" / "_" / "+" / "\\" / "]" / "[" / "{" / "}" /
+        "|" / ":" / "\"" / ";" / "'" / "," / "." / "/" / "<" / 
+        ">" / "?"
+    ;
+Lcase 
+    =   [a-z]+ 
+    ;
+Ucase 
+    =   [A-Z]+ 
+    ;
+Digits 
+    =   [0-9]+
+    ;
+EOL 
+    =   "\r" / "\n" 
+    ;
+EOF     
+    =   !_ <end of file> 
+    ;
