@@ -1,0 +1,7 @@
+Input   = [\n\r]* Line++ EOF ;
+Line    = Space / Lcase / Ucase / Digits ;
+Space = " " ;
+Lcase = [a-z]+ ;
+Ucase = [A-Z]+ ;
+Digits = [0-9]+ ;
+EOF     = !_ <end of file> ;

@@ -1,12 +1,13 @@
 How to test grammar
 ===================
 
+**Notes**
 ```
-$ antlr4 Ifa.g4 
-$ javac *.java
-$ grun Ifa stat -gui
+This directory and all files inside has no relationshipt with Jifa. They exist just to test IfA grammar.
 ```
-Last command will ask for input from stdin, just write the input and then ``Ctrl-D``, it will display AST using graphical swing. See also other options: -tree, -tokens, -ps filename.ps, etc. They are the same: will wait for ``Ctrl-D``.
 
-This directory and all files inside has no relationshipt with Jifa. They exist just to test Ifa.g4 grammar.
+See ``ROOTPROJECT/env.sh``. After sourcing it (``source env.sh`` from ROOTPROJECT), inside this dir, use these commands:
+* ``jtc``: generate and compile parser and semantic action
+* ``jtt``: test parser. This will give ``>`` prompt where expression input can be given. If input suitable with grammar, it will continue process by giving another ``>`` (if JifaSemantic.java is edited for semantic actions, then it will give result as well). Enter to end.
+* ``jtd``: delete all compilation results
 

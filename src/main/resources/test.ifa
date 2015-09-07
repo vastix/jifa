@@ -1,2 +1,2 @@
-REQUEST(antlr)
-INFORM(gembus)
+REQUEST(http://bpdp.name)
+INFORM(https://mytoko.co.id)
