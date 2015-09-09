@@ -9,6 +9,7 @@
 package name.bpdp.vastix.jifa;
 
 import mouse.runtime.Source;
+import name.bpdp.vastix.jifa.JifaSemantics;
 
 public class JifaParser extends mouse.runtime.ParserBase
 {
@@ -32,7 +33,7 @@ public class JifaParser extends mouse.runtime.ParserBase
   //-------------------------------------------------------------------
   //  Run the parser
   //-------------------------------------------------------------------
-  public boolean parse(Source src)
+  public boolean parse(Source src) 
     {
       super.init(src);
       sem.init();
@@ -55,7 +56,7 @@ public class JifaParser extends mouse.runtime.ParserBase
   //=====================================================================
   //  Input = [\n\r]* Line EOF ;
   //=====================================================================
-  private boolean Input()
+  private boolean Input() 
     {
       begin("Input");
       while (nextIn("\n\r"));
@@ -67,14 +68,18 @@ public class JifaParser extends mouse.runtime.ParserBase
   //=====================================================================
   //  Line = Force Space Propositional+ {lineProcessed} ;
   //=====================================================================
-  private boolean Line()
+  private boolean Line() 
     {
       begin("Line");
       if (!Force()) return reject();
       if (!Space()) return reject();
       if (!Propositional()) return reject();
       while (Propositional());
-      sem.lineProcessed();
+      try {
+          sem.lineProcessed();
+      } catch (Exception exp) {
+          System.out.println("Error: " + exp.getMessage());
+      }
       return accept();
     }
   

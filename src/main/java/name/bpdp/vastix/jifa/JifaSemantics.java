@@ -8,18 +8,45 @@
 //=========================================================================
 package name.bpdp.vastix.jifa;
 
-class JifaSemantics extends mouse.runtime.SemanticsBase
-{
-  //-------------------------------------------------------------------
-  //  Line = Force Space Propositional+
-  //-------------------------------------------------------------------
-  void lineProcessed()
-    {}
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+
+import java.io.IOException;
+
+class JifaSemantics extends mouse.runtime.SemanticsBase {
+
+    OkHttpClient client = new OkHttpClient();
+
+    String run(String url) throws IOException {
+
+        Request request = new Request.Builder()
+            .url(url)
+            .build();
+
+        Response response = client.newCall(request).execute();
+        return response.body().string();
+    }
+    
+    //-------------------------------------------------------------------
+    //  Line = Force Space Propositional+
+    //-------------------------------------------------------------------
+    void lineProcessed() throws IOException {
+
+        System.out.println("Scraping " + rhs(2).text() + "...");
+
+        String response = run((String)rhs(2).text());
+        System.out.println(response);
+    }
   
-  //-------------------------------------------------------------------
-  //  Propositional = (Space / Lcase / Ucase / Digits / Symbols)+
-  //-------------------------------------------------------------------
-  void getPropositional()
-    {}
+    //-------------------------------------------------------------------
+    //  Propositional = (Space / Lcase / Ucase / Digits / Symbols)+
+    //-------------------------------------------------------------------
+    void getPropositional() {
+        int rSize = rhsSize();
+        for (int i=0; i<rSize; i+=1) {
+            lhs().put(rhs(i));
+        }
+    }
   
 }

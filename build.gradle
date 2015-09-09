@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'com.github.johnrengelman.shadow' version '1.2.2'
-    id 'antlr'
+//    id 'antlr'
     id 'maven-publish'
     id 'application'
 }
