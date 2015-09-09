@@ -1,13 +1,22 @@
 package name.bpdp.vastix.jifa;
 
+import java.io.FileReader;
+import java.io.BufferedReader;
+
+import name.bpdp.vastix.jifa.JifaSemantics;
+import name.bpdp.vastix.jifa.JifaParser;
+
+import mouse.runtime.SourceFile;
+
 public class Jifa {
   public static void main( String[] args) throws Exception 
   {
-    IfaLexer lexer = new IfaLexer( new ANTLRFileStream("src/main/resources/test.ifa"));
-    CommonTokenStream tokens = new CommonTokenStream( lexer );
-    IfaParser parser = new IfaParser( tokens );
-    ParseTree tree = parser.stat();
-    ParseTreeWalker walker = new ParseTreeWalker();
-    walker.walk( new JifaWalker(), tree );
+
+      JifaParser jparse = new JifaParser();
+      SourceFile src = new SourceFile("examples/test0.ifa");
+      if (!src.created()) return;
+      boolean ifaOk = jparse.parse(src);
+      System.out.println(ifaOk? "Script executed successfully":"Script execution failure");
+
   }
 }
