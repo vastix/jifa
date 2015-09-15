@@ -24,25 +24,29 @@ Declaratives
     =   "DECLARE" 
     ;
 Propositional
-    =   (Space / Lcase / Ucase / Digits / Symbols)+ { getPropositional }
+    =   StringLiteral { getPropositional }
     ;
+
+StringLiteral
+    = "\"" (Escape / !["\\\n\r] _)* "\""
+    ;
+Escape
+    = "\\" ([btnfr"'\\] / OctalEscape / UnicodeEscape)
+    ;
+OctalEscape
+    = [0-3][0-7][0-7]
+    / [0-7][0-7]
+    / [0-7]
+    ;
+UnicodeEscape
+    = "u"+ HexDigit HexDigit HexDigit HexDigit
+    ;
+HexDigit
+    = [a-f] / [A-F] / [0-9]
+    ;
+
 Space 
     =   " " / "\t" / "\f" / EOL 
-    ;
-Symbols 
-    =   "~" / "!" / "@" / "#" / "$" / "%" / "^" / "&" / "*" / 
-        "(" / ")" / "_" / "+" / "\\" / "]" / "[" / "{" / "}" /
-        "|" / ":" / "\"" / ";" / "'" / "," / "." / "/" / "<" / 
-        ">" / "?"
-    ;
-Lcase 
-    =   [a-z]+ 
-    ;
-Ucase 
-    =   [A-Z]+ 
-    ;
-Digits 
-    =   [0-9]+
     ;
 EOL 
     =   "\r" / "\n" 
