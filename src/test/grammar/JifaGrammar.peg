@@ -1,8 +1,8 @@
 Input
-    =   [\n\r]* Line EOF
+    =   [\n\r]* Line+ EOF
     ;
 Line
-    =   Force Space Propositional+ { lineProcessed }
+    =   Force Space Propositional { lineProcessed }
     ;
 Force
     =   Representatives / Directives / Commissives /
@@ -24,11 +24,11 @@ Declaratives
     =   "DECLARE" 
     ;
 Propositional
-    =   StringLiteral { getPropositional }
+    =   StringLiteral
     ;
 
 StringLiteral
-    = "\"" (Escape / !["\\\n\r] _)* "\""
+    = "\"" (Escape / !["\\\n\r] _)* "\"" { getStringLiteral }
     ;
 Escape
     = "\\" ([btnfr"'\\] / OctalEscape / UnicodeEscape)
@@ -46,10 +46,10 @@ HexDigit
     ;
 
 Space 
-    =   " " / "\t" / "\f" / EOL 
+    =   " " / "\t" / "\f" / "\r" / "\n"
     ;
 EOL 
-    =   "\r" / "\n" 
+    =   [\r\n]+ / EOF <end of line> 
     ;
 EOF     
     =   !_ <end of file> 

@@ -13,6 +13,8 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 import java.io.IOException;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+
 class JifaSemantics extends mouse.runtime.SemanticsBase
 {
 
@@ -41,6 +43,8 @@ class JifaSemantics extends mouse.runtime.SemanticsBase
         // and in the end.
         propositional = rhs(2).text().substring(1, rhs(2).text().length()-1);
 
+        String out = StringEscapeUtils.unescapeJava(propositional);
+
         //System.out.println("Scraping " + rhs(2).text() + "...");
         System.out.println("Scraping " + propositional + "...");
 
@@ -51,18 +55,8 @@ class JifaSemantics extends mouse.runtime.SemanticsBase
             System.out.println("Error: " + exp.getMessage());
         }
 
-    }
-  
-  //-------------------------------------------------------------------
-  //  Propositional = StringLiteral
-  //-------------------------------------------------------------------
-  void getPropositional()
-    {
-        int rSize = rhsSize();
-        for (int i=0; i<rSize; i+=1) {
-            lhs().put(rhs(i));
-        }
-       
+        System.out.println(out);
+
     }
   
 }

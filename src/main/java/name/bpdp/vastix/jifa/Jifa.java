@@ -14,6 +14,7 @@ public class Jifa {
 
       JifaParser jparse = new JifaParser();
       SourceFile src = new SourceFile("examples/test0.ifa");
+      //SourceFile src = new SourceFile("examples/test-ngawur.ifa");
       if (!src.created()) return;
       boolean ifaOk = jparse.parse(src);
       System.out.println(ifaOk? "Script executed successfully":"Script execution failure");

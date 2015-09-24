@@ -1,8 +1,8 @@
 Input
-    =   [\n\r]* Line EOF
+    =   [\n\r]* Line
     ;
 Line
-    =   Force Space Propositional+ { lineProcessed }
+    =   Force Space Propositional { lineProcessed }
     ;
 Force
     =   Representatives / Directives / Commissives /
@@ -24,7 +24,7 @@ Declaratives
     =   "DECLARE" 
     ;
 Propositional
-    =   StringLiteral { getPropositional }
+    =   StringLiteral
     ;
 
 StringLiteral

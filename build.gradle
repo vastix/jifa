@@ -45,6 +45,7 @@ repositories {
 
 dependencies {
     compile 'com.squareup.okhttp:okhttp:2.5.0'
+    compile 'org.apache.commons:commons-lang3:3.4'
     compile fileTree(dir: 'lib', include: '*.jar')
     testCompile 'junit:junit:4.12'
 }
