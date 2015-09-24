@@ -41,21 +41,20 @@ class JifaSemantics extends mouse.runtime.SemanticsBase
         // Without this one, propositional will include double quote
         // " .... ", so we have to delete double quote in the beginning
         // and in the end.
+        //
         propositional = rhs(2).text().substring(1, rhs(2).text().length()-1);
 
         String out = StringEscapeUtils.unescapeJava(propositional);
 
         //System.out.println("Scraping " + rhs(2).text() + "...");
-        System.out.println("Scraping " + propositional + "...");
+        System.out.println("Scraping " + out + "...");
 
         try {
-            response = run((String)propositional);
+            response = run((String)out);
             System.out.println(response);
         } catch (Exception exp) {
             System.out.println("Error: " + exp.getMessage());
         }
-
-        System.out.println(out);
 
     }
   
