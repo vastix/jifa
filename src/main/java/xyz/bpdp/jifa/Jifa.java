@@ -1,10 +1,10 @@
-package name.bpdp.vastix.jifa;
+package xyz.bpdp.jifa;
 
 import java.io.FileReader;
 import java.io.BufferedReader;
 
-import name.bpdp.vastix.jifa.JifaSemantics;
-import name.bpdp.vastix.jifa.JifaParser;
+import xyz.bpdp.jifa.JifaSemantics;
+import xyz.bpdp.jifa.JifaParser;
 
 import mouse.runtime.SourceFile;
 

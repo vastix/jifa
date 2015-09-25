@@ -53,7 +53,7 @@ dependencies {
 shadowJar {
     classifier = 'fat'
     manifest {
-        attributes 'Main-Class': 'name.bpdp.vastix.jifa.Jifa'
+        attributes 'Main-Class': 'xyz.bpdp.jifa.Jifa'
     }
 }
 
@@ -61,4 +61,4 @@ task wrapper(type: Wrapper) {
     gradleVersion = '2.6'
 }
 
-mainClassName = 'name.bpdp.vastix.jifa.Jifa'
+mainClassName = 'xyz.bpdp.jifa.Jifa'
